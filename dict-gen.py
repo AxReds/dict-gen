@@ -23,6 +23,7 @@
 import argparse # argparse: This module makes it easy to write user-friendly command-line interfaces.
 import string # string: This module contains various string constant which contain the ASCII characters of all cases.
 import sys # sys: This module provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter.
+import sys # sys: This module provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter.
 # itertools: This module implements a number of iterator building blocks inspired by constructs from APL, Haskell, and SML.
 # Each has been recast in a form suitable for Python.
 import itertools
@@ -67,16 +68,22 @@ if __name__ == "__main__":
     parser.add_argument("--min-length", type=int, default=default_min_length, help="Minimum length of combinations")
     parser.add_argument("--max-length", type=int, default=default_max_length, help="Maximum length of combinations")
     parser.add_argument("--filename", type=str, default=default_filename, help="Filename to write combinations to")
+    
+    default_min_length = 1
+    default_max_length = 5
+    default_filename = "combinations.txt"
+    default_description = "AxReds' Dictionary Generator generates combinations of characters.\n" \
+                          "This script generates all possible combinations of characters within a specified length range and writes them to a specified file."
+
+    parser = argparse.ArgumentParser(description=default_description)
+    parser.add_argument("--min-length", type=int, default=default_min_length, help="Minimum length of combinations")
+    parser.add_argument("--max-length", type=int, default=default_max_length, help="Maximum length of combinations")
+    parser.add_argument("--filename", type=str, default=default_filename, help="Filename to write combinations to")
     args = parser.parse_args()
 
     # If no arguments were provided, ask the user for confirmation
-<<<<<<< HEAD
     if len(sys.argv) == 1:
         confirmation = input(f"\n{parser.description}\n\nNo arguments provided. Do you want to proceed with the default values? (min-length: {args.min_length}, max-length: {args.max_length}, filename: {args.filename}) (y/n) ")
-=======
-    if not any(vars(args).values()):
-        confirmation = input(f"No arguments provided. Do you want to proceed with the default values? (min-length: {args.min_length}, max-length: {args.max_length}, filename: {args.filename}) (y/n) ")
->>>>>>> 8f18e12 (added default values for the arguments)
         if confirmation.lower() != 'y':
             print("Exiting...")
             exit()
