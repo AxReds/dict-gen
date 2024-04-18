@@ -30,9 +30,6 @@ import threading # threading: This module constructs higher-level threading inte
 import signal # signal: This module provides mechanisms to use signal handlers in Python.
 import time # time: This module provides various time-related functions.
 
-#Global variables
-global min_length, max_length, combination, id_combinations, id_iterations
-
 # Function to perform countdown
 def countdown(seconds):
     while seconds > 0:
@@ -46,6 +43,8 @@ def get_confirmation(min_length, max_length, last_combination):
 
 # Function to handle SIGINT signal
 def handle_sigint(signum, frame):
+    #Global variables
+    global min_length, max_length, combination, id_combinations, id_iterations
     write_checkpoint(min_length, max_length, combination, id_combinations, id_iterations)
     print("\nUser interruption detected. Current state saved to checkpoint file.")
     sys.exit(1)
