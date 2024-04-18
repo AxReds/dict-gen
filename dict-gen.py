@@ -70,8 +70,13 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # If no arguments were provided, ask the user for confirmation
+<<<<<<< HEAD
     if len(sys.argv) == 1:
         confirmation = input(f"\n{parser.description}\n\nNo arguments provided. Do you want to proceed with the default values? (min-length: {args.min_length}, max-length: {args.max_length}, filename: {args.filename}) (y/n) ")
+=======
+    if not any(vars(args).values()):
+        confirmation = input(f"No arguments provided. Do you want to proceed with the default values? (min-length: {args.min_length}, max-length: {args.max_length}, filename: {args.filename}) (y/n) ")
+>>>>>>> 8f18e12 (added default values for the arguments)
         if confirmation.lower() != 'y':
             print("Exiting...")
             exit()
